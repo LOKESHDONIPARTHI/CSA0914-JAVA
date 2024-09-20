@@ -1,0 +1,23 @@
+public class ThreadSleepExample {
+    public static void main(String[] args) throws InterruptedException {
+        ArmstrongThread t1 = new ArmstrongThread();
+        FibonacciThread t2 = new FibonacciThread();
+
+        t1.start();
+        t2.start();
+
+        t1.join(10000);
+        t2.join(5000);
+
+        long t1WaitTime = t1.getState() == Thread.State.TERMINATED ? 10000 : 0;
+        long t2WaitTime = t2.getState() == Thread.State.TERMINATED ? 5000 : 0;
+
+        if (t1WaitTime > t2WaitTime) {
+            System.out.println("T1 has a longer wait time.");
+        } else if (t2WaitTime > t1WaitTime) {
+            System.out.println("T2 has a longer wait time.");
+        } else {
+            System.out.println("Both threads have equal wait times.");
+        }
+    }
+}
