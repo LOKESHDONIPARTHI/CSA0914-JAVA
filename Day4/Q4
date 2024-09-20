@@ -1,0 +1,8 @@
+public class MissingNumber {
+    public static int findMissingNumber(List<Integer> numbers) {
+        int n = numbers.size();
+        int expectedSum = n * (n + 1) / 2;
+        int actualSum = numbers.stream().mapToInt(Integer::intValue).sum();
+        return expectedSum - actualSum;
+    }
+}
