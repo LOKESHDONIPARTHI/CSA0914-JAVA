@@ -1,0 +1,17 @@
+class StaticExample {
+    static int staticVar = 5;
+
+    static void staticMethod() {
+        System.out.println("Static Method called. Static Variable: " + staticVar);
+    }
+
+    static {
+        System.out.println("Static Block executed. Static Variable: " + staticVar);
+    }
+
+    static class StaticNested {
+        void display() {
+            System.out.println("Inside Static Nested Class");
+        }
+    }
+}
