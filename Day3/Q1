@@ -1,0 +1,29 @@
+import java.lang.Math;
+
+public class ArithmeticExceptions {
+    public static void main(String[] args) {
+        try {
+            System.out.println("Divided by Zero: " + (10 / 0));
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Division by zero.");
+        }
+
+        try {
+            System.out.println("Logarithm of negative number: " + Math.log(-1));
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Logarithm of a negative number.");
+        }
+
+        try {
+            System.out.println("Tan 90 Degree: " + Math.tan(Math.toRadians(90)));
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Tan of 90 degrees.");
+        }
+
+        try {
+            System.out.println("Zero power Zero: " + Math.pow(0, 0));
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Zero to the power of zero.");
+        }
+    }
+}
