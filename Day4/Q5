@@ -1,0 +1,38 @@
+abstract class Statistics {
+    public abstract double total();
+    public abstract double average();
+    
+    public double mean(double[] data) {
+        return total() / data.length;
+    }
+
+    public double mode(double[] data) {
+        Map<Double, Integer> frequencyMap = new HashMap<>();
+        for (double num : data) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+        }
+        return frequencyMap.entrySet().stream().max(Map.Entry.comparingByValue()).get().getKey();
+    }
+
+    public double median(double[] data) {
+        Arrays.sort(data);
+        int length = data.length;
+        return (length % 2 == 0) ? (data[length / 2 - 1] + data[length / 2]) / 2 : data[length / 2];
+    }
+}
+
+class DataStatistics extends Statistics {
+    private double[] data;
+
+    public DataStatistics(double[] data) {
+        this.data = data;
+    }
+
+    public double total() {
+        return Arrays.stream(data).sum();
+    }
+
+    public double average() {
+        return total() / data.length;
+    }
+}
