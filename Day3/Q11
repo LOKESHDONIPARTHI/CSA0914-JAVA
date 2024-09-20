@@ -1,0 +1,17 @@
+public class JoinOrSleepExample {
+    public static void main(String[] args) throws InterruptedException {
+        ArmstrongThread t1 = new ArmstrongThread();
+        FibonacciThread t2 = new FibonacciThread();
+
+        t1.start();
+        t2.start();
+
+        t1.join();
+        t2.join();
+
+        if (t1.isAlive() && t2.isAlive()) {
+            t1.sleep(10000);
+            t2.sleep(5000);
+        }
+    }
+}
