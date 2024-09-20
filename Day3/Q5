@@ -1,0 +1,55 @@
+class NegativeValueException extends Exception {
+    public NegativeValueException(String message) {
+        super(message);
+    }
+}
+
+class InvalidDecimalException extends Exception {
+    public InvalidDecimalException(String message) {
+        super(message);
+    }
+}
+
+class NonIntegerException extends Exception {
+    public NonIntegerException(String message) {
+        super(message);
+    }
+}
+
+public class CustomExceptions {
+    public static void main(String[] args) {
+        try {
+            checkNegativeValue(-10);
+        } catch (NegativeValueException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            checkDecimal("12.34.56");
+        } catch (InvalidDecimalException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            checkInteger("NotAnInteger");
+        } catch (NonIntegerException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    static void checkNegativeValue(int value) throws NegativeValueException {
+        if (value < 0) throw new NegativeValueException("Negative value not allowed.");
+    }
+
+    static void checkDecimal(String value) throws InvalidDecimalException {
+        if (!value.matches("\\d+\\.\\d+")) throw new InvalidDecimalException("Invalid decimal format.");
+    }
+
+    static void checkInteger(String value) throws NonIntegerException {
+        try {
+            Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            throw new NonIntegerException("Not a valid integer.");
+        }
+    }
+}
