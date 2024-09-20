@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class NumberFormatExceptions {
+    public static void main(String[] args) {
+        try {
+            int number = Integer.parseInt("NotANumber");
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Parsing a non-numeric string.");
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        try {
+            int number = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Reading user input without validation.");
+        }
+
+        try {
+            double value = Double.parseDouble("12,345.67");
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Formatting issues in 'Decimal Format'.");
+        }
+
+        try {
+            double localizedValue = Double.parseDouble("12.345,67");
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Incorrectly using localized decimal separators.");
+        }
+    }
+}
