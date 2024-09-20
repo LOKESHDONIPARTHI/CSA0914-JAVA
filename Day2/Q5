@@ -1,0 +1,60 @@
+abstract class Statistics {
+    public abstract double total();
+    public abstract double average();
+
+    public double mean(double[] data) {
+        return total() / data.length;
+    }
+
+    public double mode(double[] data) {
+        java.util.Map<Double, Integer> frequencyMap = new java.util.HashMap<>();
+        for (double num : data) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+        }
+        double mode = data[0];
+        int maxCount = 0;
+        for (java.util.Map.Entry<Double, Integer> entry : frequencyMap.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                maxCount = entry.getValue();
+                mode = entry.getKey();
+            }
+        }
+        return mode;
+    }
+
+    public double median(double[] data) {
+        java.util.Arrays.sort(data);
+        int length = data.length;
+        return (length % 2 == 0) ? (data[length / 2 - 1] + data[length / 2]) / 2 : data[length / 2];
+    }
+}
+
+class DataStatistics extends Statistics {
+    private double[] data;
+
+    public DataStatistics(double[] data) {
+        this.data = data;
+    }
+
+    @Override
+    public double total() {
+        double sum = 0;
+        for (double num : data) {
+            sum += num;
+        }
+        return sum;
+    }
+
+    @Override
+    public double average() {
+        return total() / data.length;
+    }
+
+    public void displayStatistics() {
+        System.out.println("Total: " + total());
+        System.out.println("Average: " + average());
+        System.out.println("Mean: " + mean(data));
+        System.out.println("Mode: " + mode(data));
+        System.out.println("Median: " + median(data));
+    }
+}
