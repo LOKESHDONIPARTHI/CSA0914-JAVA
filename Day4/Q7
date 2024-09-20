@@ -1,0 +1,26 @@
+interface Sum {
+    void sum(int a, int b);
+}
+
+interface Avg {
+    void avg(int[] nums);
+}
+
+interface Percentage {
+    void percentage(int total, int obtained);
+}
+
+class CalculatorAll implements Sum, Avg, Percentage {
+    public void sum(int a, int b) {
+        System.out.println("Sum: " + (a + b));
+    }
+
+    public void avg(int[] nums) {
+        double average = Arrays.stream(nums).average().orElse(0);
+        System.out.println("Average: " + average);
+    }
+
+    public void percentage(int total, int obtained) {
+        System.out.println("Percentage: " + ((obtained * 100.0) / total) + "%");
+    }
+}
