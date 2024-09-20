@@ -1,0 +1,12 @@
+class BaseArea {
+    void area(int a, int b) {
+        System.out.println("Area of square: " + (a * a));
+    }
+}
+
+class DerivedArea extends BaseArea {
+    @Override
+    void area(int a, int b) {
+        System.out.println("Area of rectangle: " + (a * b));
+    }
+}
