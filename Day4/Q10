@@ -1,0 +1,11 @@
+public class KthSmallest {
+    public static int kthSmallest(Set<Integer> set, int k) {
+        List<Integer> list = new ArrayList<>(set);
+        Collections.sort(list);
+        return list.get(k - 1);
+    }
+
+    public static boolean areSetsEqual(Set<Integer> set1, Set<Integer> set2) {
+        return set1.equals(set2);
+    }
+}
