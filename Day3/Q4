@@ -1,0 +1,43 @@
+public class IllegalArgumentExceptions {
+    public static void main(String[] args) {
+        try {
+            validateAge(-5);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: Negative argument in method requiring non-negative values.");
+        }
+
+        try {
+            validateEnum("INVALID");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: Invalid enum constant passed to method.");
+        }
+
+        try {
+            setRange(5, 3);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: Setting an invalid range for method parameter.");
+        }
+
+        try {
+            validateString("");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: Empty or null string argument in method requiring non-empty strings.");
+        }
+    }
+
+    static void validateAge(int age) {
+        if (age < 0) throw new IllegalArgumentException();
+    }
+
+    static void validateEnum(String value) {
+        if (!value.equals("VALID")) throw new IllegalArgumentException();
+    }
+
+    static void setRange(int start, int end) {
+        if (start > end) throw new IllegalArgumentException();
+    }
+
+    static void validateString(String str) {
+        if (str == null || str.isEmpty()) throw new IllegalArgumentException();
+    }
+}
