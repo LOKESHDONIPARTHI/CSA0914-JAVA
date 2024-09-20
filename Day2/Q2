@@ -1,0 +1,27 @@
+class Base {
+    int a, b;
+
+    Base() {
+        a = 10;
+        b = 15;
+    }
+
+    Base(int a, int b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    void disp() {
+        System.out.println("a: " + a + ", b: " + b);
+    }
+}
+
+class Derived extends Base {
+    Derived() {
+        super(20, 25);
+    }
+
+    void show() {
+        super.disp();
+    }
+}
