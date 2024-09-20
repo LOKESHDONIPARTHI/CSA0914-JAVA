@@ -1,0 +1,33 @@
+interface Tree {
+    void fruits(String... fruitNames);
+    void leaves(int... leafCounts);
+    void flowers(int... flowerCounts);
+}
+
+class Branch1 implements Tree {
+    public void fruits(String... fruitNames) {
+        System.out.println("Branch1 Fruits: " + String.join(", ", fruitNames));
+    }
+
+    public void leaves(int... leafCounts) {
+        System.out.println("Branch1 Leaves: " + java.util.Arrays.toString(leafCounts));
+    }
+
+    public void flowers(int... flowerCounts) {
+        System.out.println("Branch1 Flowers: " + java.util.Arrays.toString(flowerCounts));
+    }
+}
+
+class Branch2 implements Tree {
+    public void fruits(String... fruitNames) {
+        System.out.println("Branch2 Fruits: " + String.join(", ", fruitNames));
+    }
+
+    public void leaves(int... leafCounts) {
+        System.out.println("Branch2 Leaves: " + java.util.Arrays.toString(leafCounts));
+    }
+
+    public void flowers(int... flowerCounts) {
+        System.out.println("Branch2 Flowers: " + java.util.Arrays.toString(flowerCounts));
+    }
+}
