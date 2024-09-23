@@ -1,0 +1,29 @@
+class Employee {
+    private String name;
+    protected int id;
+    public String department;
+
+    public Employee(String name, int id, String department) {
+        this.name = name;
+        this.id = id;
+        this.department = department;
+    }
+}
+
+class Manager extends Employee {
+    public Manager(String name, int id, String department) {
+        super(name, id, department);
+    }
+
+    public void display() {
+        // System.out.println("Name: " + name); // Compilation error
+        System.out.println("ID: " + id + ", Department: " + department);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Manager manager = new Manager("John", 1, "Sales");
+        manager.display();
+    }
+}
