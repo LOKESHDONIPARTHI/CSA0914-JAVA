@@ -1,0 +1,27 @@
+class Customer {
+    private String accountNo;
+    private String accName;
+    private double balance = 10000;
+
+    public synchronized void deposit(double amount) {
+        balance += amount;
+        notify();
+    }
+
+    public synchronized void withdraw(double amount) throws InterruptedException {
+        while (balance < amount) {
+            wait();
+        }
+        balance -= amount;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+
+public class BankSynchronization {
+    public static void main(String[] args) {
+        Customer customer = new Customer();
+    }
+}
