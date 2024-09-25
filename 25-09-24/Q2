@@ -1,0 +1,13 @@
+import java.util.Scanner;
+
+public class NumberAndSquare {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+        int[] result = {number, number * number};
+
+        System.out.println("Number: " + result[0]);
+        System.out.println("Square: " + result[1]);
+    }
+}
