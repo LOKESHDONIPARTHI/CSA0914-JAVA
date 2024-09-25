@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+class BankAccount {
+    private String depositorName;
+    private String accountNumber;
+    private String accountType;
+    private double balance;
+
+    public BankAccount() {
+        this.balance = 10000; // Initial balance
+    }
+
+    public void readAccountDetails() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter account number: ");
+        accountNumber = scanner.nextLine();
+        System.out.print("Enter depositor name: ");
+        depositorName = scanner.nextLine();
+        System.out.print("Enter account type (Savings/Current): ");
+        accountType = scanner.nextLine();
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        if (balance - amount < 500) {
+            System.out.println("Withdrawal denied: Minimum balance of Rs. 500 required.");
+        } else {
+            balance -= amount;
+        }
+    }
+
+    public void displayBalance() {
+        System.out.println("Current balance: Rs. " + balance);
+    }
+}
+
+public class BankAccountDemo {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount();
+        account.readAccountDetails();
+        account.displayBalance();
+
+        account.deposit(1500);
+        account.displayBalance();
+        account.withdraw(2000);
+        account.displayBalance();
+    }
+}
